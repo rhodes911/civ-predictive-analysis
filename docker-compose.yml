@@ -1,0 +1,46 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: civ6_database
+    environment:
+      - POSTGRES_DB=civ6_analytics
+      - POSTGRES_USER=civ6_user
+      - POSTGRES_PASSWORD=civ6_password
+      - POSTGRES_INITDB_ARGS=--auth-host=scram-sha-256
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - civ6_network
+    restart: unless-stopped
+
+  superset:
+    image: apache/superset:latest
+    container_name: civ6_superset
+    environment:
+      - SUPERSET_SECRET_KEY=this_is_a_very_long_jwt_secret_key_for_civ6_local_development_definitely_more_than_32_bytes_long_12345
+    ports:
+      - "8088:8088"
+    volumes:
+      - superset_data:/app/superset_home
+    networks:
+      - civ6_network
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    command: >
+      sh -c "pip install psycopg2-binary &&
+             superset db upgrade &&
+             superset fab create-admin --username admin --firstname Admin --lastname User --email admin@civ6.local --password admin &&
+             superset init &&
+             superset run -h 0.0.0.0 -p 8088"
+
+volumes:
+  postgres_data:
+  superset_data:
+
+networks:
+  civ6_network:
+    driver: bridge

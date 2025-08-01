@@ -1,0 +1,31 @@
+# Civ VI ML Strategy Analysis - Requirements
+
+# Core Dependencies
+pandas>=1.5.0
+numpy>=1.20.0
+psycopg2-binary>=2.9.0
+watchdog>=2.1.0
+
+# Machine Learning
+scikit-learn>=1.1.0
+matplotlib>=3.5.0
+seaborn>=0.11.0
+jupyter>=1.0.0
+ipykernel>=6.0.0
+
+# Data Processing
+scipy>=1.9.0
+openpyxl>=3.0.0  # Excel export support
+
+# Development & Testing
+pytest>=7.0.0
+pytest-cov>=3.0.0
+
+# Optional: Advanced ML (uncomment if needed)
+# xgboost>=1.6.0
+# lightgbm>=3.3.0
+# tensorflow>=2.9.0
+
+# Optional: Deep Learning for Advanced Models (uncomment if needed)
+# torch>=1.12.0
+# torchvision>=0.13.0

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Mod id="6f685f88-7b9e-4f4c-8c7f-5c9d3b2a1e8f" version="1.0">
+  <Properties>
+    <Name>Civ VI Live Data Exporter</Name>
+    <Teaser>Exports real-time game data for ML analysis</Teaser>
+    <Description>
+      Exports live game data (turn by turn) to JSON files for external analysis systems.
+      Perfect for connecting Civ VI to machine learning and analytics dashboards.
+      
+      Features:
+      - Real-time turn data export
+      - Player statistics (science, culture, gold, faith per turn)
+      - City information (population, districts, buildings)
+      - Military strength calculations
+      - Connection status monitoring
+      
+      Files exported to: C:\Users\rhode\source\repos\civ-predictive-analysis\live_data\
+    </Description>
+    <Authors>Civ VI ML Strategy Analysis Project</Authors>
+    <SpecialThanks>Civilization VI Modding Knowledge Base</SpecialThanks>
+    <CompatibleVersions>1.2,2.0,2.1,2.2,2.3,2.4,2.5,2.6</CompatibleVersions>
+    <AffectsSavedGames>0</AffectsSavedGames>
+  </Properties>
+  <Dependencies />
+  <References />
+  <Blocks />
+  <Files>
+    <File>LiveDataExporter.lua</File>
+  </Files>
+  <LocalizedText />
+  <GameData />
+  <FrontEndActions>
+  </FrontEndActions>
+  <InGameActions>
+    <AddGameplayScripts>
+      <File>LiveDataExporter.lua</File>
+    </AddGameplayScripts>
+  </InGameActions>
+</Mod>
