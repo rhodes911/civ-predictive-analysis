@@ -1,22 +1,22 @@
-# 🏆 Civ VI Race Analysis Dashboard
+# 🏆 Civ VI Analytics Dashboard
 
 **🚀 Complete Local Solution - From Game Data to Strategic Intelligence**  
-*Real-time civilization tracking and race analysis for Civ VI players*
+*Turn your Civ VI game data into interactive dashboards and analysis*
 
 ## 🎯 What This Does
 
-**Turn your Civ VI game into a strategic intelligence dashboard:**
-- 📊 **Race Analysis**: Track civilization score progression over time
-- 🧪 **Science/Culture Tracking**: See who's leading in research and culture
-- 📈 **Historical Data**: Complete turn-by-turn progression from game start
+**Turn your Civ VI game into a data analytics platform:**
+- 📊 **Interactive Dashboards**: Create any charts you want with your game data
+- 🧪 **Civilization Tracking**: Monitor science, culture, population, and more
+- 📈 **Historical Data**: Complete turn-by-turn data from game start
 - 🎮 **Live Updates**: Data updates as you play more turns
-- 🔍 **Strategic Insights**: Identify rising/falling civilizations and trends
+- 🔍 **Custom Analysis**: Build whatever visualizations you need
 
-**Perfect for answering:**
-- "How did England overtake Rome to become #1?"
-- "Which civilization has the strongest science output?"
-- "Who's been consistently rising in the rankings?"
-- "What turn did my civilization peak?"
+**Perfect for analyzing:**
+- "How did England's science output change over time?"
+- "Which civilizations have the most cities?"
+- "What's my population growth trend?"
+- "How do different civs compare on any metric?"
 
 ## 🚀 Quick Start (3 Steps to Dashboard)
 
@@ -49,12 +49,12 @@ docker-compose up -d
 docker-compose up data-loader
 ```
 
-### **Step 4: Create Your Dashboard** 
+### **Step 4: Build Your Dashboard** 
 - **URL**: http://localhost:8088
 - **Login**: admin / admin
-- **Create charts** using instructions in `superset-chart-instructions.md`
+- **Create any charts you want** using instructions in `superset-chart-instructions.md`
 
-**🎉 You now have a working Civ VI race analysis dashboard!**
+**🎉 You now have your Civ VI data ready for analysis!**
 
 ## 📊 How It Works
 
@@ -66,11 +66,11 @@ Civ VI Game → CSV Files → Data Loader → PostgreSQL → Superset Dashboard
 ### **Your Workflow**
 1. **Play Civ VI** 🎮 - Game automatically writes data to CSV files
 2. **Click Play Button** ▶️ - Use Docker Desktop to run data loader
-3. **View Dashboard** 📊 - Superset shows your race progression
+3. **Build Charts** 📊 - Superset lets you create any visualizations you want
 
 ### **Services**
 - **PostgreSQL** - Stores your game data (localhost:5432)
-- **Superset** - Interactive dashboard (localhost:8088)  
+- **Superset** - Interactive dashboard builder (localhost:8088)  
 - **Data Loader** - Smart script that processes CSV files
 
 ### **Key Features**
@@ -99,7 +99,7 @@ Civ VI Game → CSV Files → Data Loader → PostgreSQL → Superset Dashboard
 - `docker-compose.yml` - Infrastructure setup
 - `stage4h_insert_data.py` - Smart data processing script
 - `Dockerfile.data-loader` - Container for data processing
-- `superset-chart-instructions.md` - Dashboard creation guide
+- `superset-chart-instructions.md` - Chart creation guide
 
 ### **Database**
 - `database/init.sql` - PostgreSQL schema
@@ -136,4 +136,4 @@ Civ VI Game → CSV Files → Data Loader → PostgreSQL → Superset Dashboard
 
 ---
 
-*Ready to turn your Civ VI games into strategic intelligence? Get started with the Quick Start guide above! 🚀*
+*Ready to turn your Civ VI games into data insights? Get started with the Quick Start guide above! 🚀*
