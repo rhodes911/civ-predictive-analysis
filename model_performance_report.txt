@@ -1,0 +1,46 @@
+🎯 CIV VI VICTORY PREDICTION MODEL PERFORMANCE REPORT
+=================================================================
+Generated: 2025-08-02 12:41:27
+
+🤖 MODEL OVERVIEW:
+Model Type: Random Forest Classifier
+Training Data: 408 civilization records
+Features Used: 19 features
+Target: Binary classification (will_win: 0/1)
+
+📊 PERFORMANCE METRICS:
+Test Accuracy: 97.6%
+Precision: 100.0%
+Recall: 90.9%
+F1-Score: 95.2%
+
+📝 PERFORMANCE INTERPRETATION:
+🟢 EXCELLENT: Model achieves high accuracy in predicting winners
+✅ High precision: When model predicts a winner, it's usually correct
+✅ High recall: Model catches most actual winners
+
+🎯 TOP 10 MOST IMPORTANT FEATURES:
+ 1. current_score              20.4%
+ 2. yields_production          19.5%
+ 3. score_rank                  7.0%
+ 4. population_rank             6.9%
+ 5. yields_culture              5.7%
+ 6. game_turn                   5.1%
+ 7. development_index           4.9%
+ 8. population_per_city         4.6%
+ 9. science_rank                4.1%
+10. cities_rank                 3.9%
+
+💡 STRATEGIC INSIGHTS:
+
+🚀 ACTIONABLE RECOMMENDATIONS:
+1. Use this model for Turn 20+ predictions in current games
+2. Focus early game strategy on the top 5 features identified
+3. Monitor relative rankings vs absolute values
+4. Collect more game data to improve model accuracy over time
+
+⚙️  TECHNICAL DETAILS:
+Random Forest Parameters:
+  Trees: 50
+  Max Depth: 10
+  Min Samples Split: 5

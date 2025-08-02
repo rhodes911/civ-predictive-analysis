@@ -1,0 +1,98 @@
+🎯 CIV VI ML TRAINING DATA ANALYSIS REPORT
+============================================================
+Generated: 2025-08-02 12:38:25
+
+📊 DATASET OVERVIEW:
+Total Records: 408
+Unique Games: 10
+Unique Civilizations: 7
+
+🎮 GAME SESSION BREAKDOWN:
+Previous_Game: 376 records
+Current_Game: 32 records
+
+🏆 WINNER DISTRIBUTION:
+Total Winners: 109
+CIVILIZATION_ENGLAND: 52 victories
+CIVILIZATION_INDONESIA: 32 victories
+CIVILIZATION_NETHERLANDS: 18 victories
+CIVILIZATION_ROME: 7 victories
+
+📈 CURRENT TURN FEATURE STATISTICS:
+Num Cities:
+  Winners Average: 1.1
+  Losers Average: 1.8
+  Winner Advantage: -38.4%
+
+Population:
+  Winners Average: 3.9
+  Losers Average: 5.3
+  Winner Advantage: -25.2%
+
+Techs:
+  Winners Average: 3.1
+  Losers Average: 4.1
+  Winner Advantage: -22.3%
+
+Civics:
+  Winners Average: 2.9
+  Losers Average: 3.7
+  Winner Advantage: -23.1%
+
+Yields Science:
+  Winners Average: 4.5
+  Losers Average: 5.4
+  Winner Advantage: -17.0%
+
+Yields Culture:
+  Winners Average: 4.0
+  Losers Average: 6.1
+  Winner Advantage: -35.7%
+
+Yields Production:
+  Winners Average: 9.0
+  Losers Average: 14.8
+  Winner Advantage: -39.0%
+
+Buildings:
+  Winners Average: 11.4
+  Losers Average: 11.3
+  Winner Advantage: 0.8%
+
+Districts:
+  Winners Average: 0.2
+  Losers Average: 0.3
+  Winner Advantage: -46.2%
+
+Current Score:
+  Winners Average: 35.8
+  Losers Average: 42.9
+  Winner Advantage: -16.5%
+
+Game Turn:
+  Winners Average: 38.9
+  Losers Average: 45.2
+  Winner Advantage: -13.8%
+
+🎯 CURRENT TURN RANKING ANALYSIS:
+Science Rank:
+  Winners Average Rank: 2.9
+  % Winners in Top 2: 49.5%
+
+Cities Rank:
+  Winners Average Rank: 2.8
+  % Winners in Top 2: 58.7%
+
+Score Rank:
+  Winners Average Rank: 2.6
+  % Winners in Top 2: 46.8%
+
+🔍 DATA QUALITY CHECKS:
+Missing Values: 0
+Duplicate Records: 0
+✅ All games have adequate civilization count
+
+🤖 ML MODEL READINESS:
+Class Balance: 26.7% winners, 73.3% non-winners
+✅ Sufficient data for initial model training
+✅ Good class balance for binary classification
