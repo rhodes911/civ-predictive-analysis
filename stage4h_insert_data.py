@@ -66,19 +66,31 @@ def insert_civ_data():
                 return False
         
         # Define the major civilizations (the main players, not city-states)
-        # This includes both old and new game civilizations
+        # This includes civilizations from all game sessions
         major_civilizations = {
-            " CIVILIZATION_NETHERLANDS",  # Old game
+            # First game
+            " CIVILIZATION_NETHERLANDS", 
             " CIVILIZATION_ROME", 
             " CIVILIZATION_CHINA",
             " CIVILIZATION_ENGLAND",
             " CIVILIZATION_CANADA",
-            " CIVILIZATION_GAUL",
-            " CIVILIZATION_INDONESIA",   # New game
+            " CIVILIZATION_INDONESIA",
             " CIVILIZATION_ETHIOPIA",
-            " CIVILIZATION_MALI", 
-            " CIVILIZATION_CREE",
-            " CIVILIZATION_OTTOMAN"
+            " CIVILIZATION_CREE",        # Appears in multiple games
+            " CIVILIZATION_OTTOMAN",
+            # Second game
+            " CIVILIZATION_GAUL",        
+            " CIVILIZATION_MALI",        
+            " CIVILIZATION_GRAN_COLOMBIA",
+            " CIVILIZATION_JAPAN",       
+            " CIVILIZATION_MAORI",       # Appears in multiple games
+            " CIVILIZATION_MAYA",
+            # Third game
+            " CIVILIZATION_AUSTRALIA",
+            " CIVILIZATION_BABYLON",
+            " CIVILIZATION_MACEDON",
+            " CIVILIZATION_POLAND",
+            " CIVILIZATION_SCYTHIA"
         }
         
         # Find the latest complete turn (same logic as stage4d/4e)
@@ -225,13 +237,19 @@ def insert_civ_data():
             major_civs_stats2 = turn_stats2[turn_stats2[' Player'].isin(major_civilizations)]
             
             # For scores, we need to map civilization names to player numbers
-            # Create a mapping based on the order they appear
+            # Create a mapping based on the civilizations ACTUALLY IN THIS TURN, not all major civs
+            current_turn_civs = sorted(major_civs_stats[' Player'].unique())
             civ_to_player = {}
-            for i, civ in enumerate(sorted(major_civilizations)):
+            for i, civ in enumerate(current_turn_civs):
                 civ_to_player[civ] = i
             
-            # Filter scores using player numbers (0-5)
-            major_civs_scores = turn_scores[turn_scores[' Player'].isin(range(6))]
+            print(f"  🎯 Turn {current_turn} civ-to-player mapping:")
+            for civ, player_num in civ_to_player.items():
+                print(f"    {civ} → Player {player_num}")
+            
+            # Filter scores using the actual number of players in this turn
+            max_players = len(current_turn_civs)
+            major_civs_scores = turn_scores[turn_scores[' Player'].isin(range(max_players))]
             
             print(f"  Stats: {len(major_civs_stats)} records")
             print(f"  Stats2: {len(major_civs_stats2)} records") 
