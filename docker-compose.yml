@@ -27,10 +27,6 @@ services:
     volumes:
       - superset_data:/app/superset_home
       - ./superset/superset_config.py:/app/superset_config.py
-      - ./superset/civ6_refresh_plugin.py:/app/civ6_refresh_plugin.py
-      - ./superset/civ6_dashboard_extension.js:/app/static/civ6_dashboard_extension.js
-      - /var/run/docker.sock:/var/run/docker.sock
-      - .:/app/project
     networks:
       - civ6_network
     depends_on:
@@ -59,40 +55,6 @@ services:
       - postgres
     restart: "no"
     command: sh -c "python stage4h_insert_data.py && echo '✅ Data loading complete! Container will stop.' && sleep 5"
-
-  control-panel:
-    build:
-      context: .
-      dockerfile: Dockerfile.control-panel
-    container_name: civ6_control_panel
-    ports:
-      - "5000:5000"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - .:/app/project
-    networks:
-      - civ6_network
-    depends_on:
-      - postgres
-    restart: unless-stopped
-    profiles:
-      - control-panel
-
-  # Automatic dashboard creator
-  dashboard-creator:
-    profiles: ["setup"]
-    build:
-      context: .
-      dockerfile: Dockerfile.dashboard-creator
-    depends_on:
-      - superset
-      - postgres
-    environment:
-      - SUPERSET_URL=http://superset:8088
-    volumes:
-      - .:/app/project
-    networks:
-      - civ6_network
 
 volumes:
   postgres_data:
