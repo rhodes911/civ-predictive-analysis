@@ -1,7 +1,7 @@
 FROM python:3.11-slim
 
 # Install required packages
-RUN pip install pandas psycopg2-binary
+RUN pip install pandas psycopg2-binary numpy
 
 # Set working directory
 WORKDIR /app
@@ -11,5 +11,8 @@ COPY stage4h_insert_data.py .
 
 # Update the script to use Docker environment
 ENV PYTHONUNBUFFERED=1
+
+# Add a label to identify this container
+LABEL description="Civ VI Data Loader - Click Play button to load latest game data"
 
 # The command will be specified in docker-compose.yml

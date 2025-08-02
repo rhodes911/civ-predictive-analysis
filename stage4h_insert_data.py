@@ -65,21 +65,27 @@ def insert_civ_data():
                 print(f"  ❌ {name}: File not found")
                 return False
         
-        # Define the major civilizations (the 6 main players, not city-states)
+        # Define the major civilizations (the main players, not city-states)
+        # This includes both old and new game civilizations
         major_civilizations = {
-            " CIVILIZATION_NETHERLANDS",
+            " CIVILIZATION_NETHERLANDS",  # Old game
             " CIVILIZATION_ROME", 
             " CIVILIZATION_CHINA",
             " CIVILIZATION_ENGLAND",
             " CIVILIZATION_CANADA",
-            " CIVILIZATION_GAUL"
+            " CIVILIZATION_GAUL",
+            " CIVILIZATION_INDONESIA",   # New game
+            " CIVILIZATION_ETHIOPIA",
+            " CIVILIZATION_MALI", 
+            " CIVILIZATION_CREE",
+            " CIVILIZATION_OTTOMAN"
         }
         
         # Find the latest complete turn (same logic as stage4d/4e)
         stats_df = dataframes['stats']
         
-        # Find ALL turns with complete data for major civilizations
-        print("🔍 Finding all complete turns...")
+        # Find ALL turns with data (any number of major civilizations)
+        print("🔍 Finding all turns with civilization data...")
         
         complete_turns = []
         for turn in sorted(stats_df['Game Turn'].unique()):
@@ -87,13 +93,14 @@ def insert_civ_data():
             turn_civs = set(turn_data[' Player'].unique())
             major_civ_count = len(turn_civs.intersection(major_civilizations))
             
-            print(f"  Turn {turn}: {major_civ_count}/6 major civilizations, {len(turn_civs)} total")
+            print(f"  Turn {turn}: {major_civ_count} major civilizations, {len(turn_civs)} total")
             
-            if major_civ_count == 6:  # All 6 major civs present
+            # Accept turns with ANY number of major civs (flexible for different games)
+            if major_civ_count >= 1:  # At least 1 major civ present
                 complete_turns.append(turn)
         
         if not complete_turns:
-            print("❌ No complete turn data found")
+            print("❌ No turn data found with major civilizations")
             return False
         
         print(f"✅ Found {len(complete_turns)} complete turns: {complete_turns}")
@@ -107,20 +114,74 @@ def insert_civ_data():
         conn = psycopg2.connect(**db_config)
         cursor = conn.cursor()
         
-        # Check what historical data we already have
+        # Check what historical data we already have and what civs are in current logs
         print("📊 Checking existing historical data...")
         cursor.execute("SELECT DISTINCT game_turn FROM civ_game_data ORDER BY game_turn")
         existing_turns = [row[0] for row in cursor.fetchall()]
-        if existing_turns:
-            print(f"   📈 Existing turns in database: {existing_turns}")
+        
+        cursor.execute("SELECT DISTINCT civilization FROM civ_game_data ORDER BY civilization")
+        existing_civs = set([row[0] for row in cursor.fetchall()])
+        
+        # Get civilizations from current logs
+        current_civs = set()
+        for turn in complete_turns:
+            turn_data = stats_df[stats_df['Game Turn'] == turn]
+            turn_civs = set(turn_data[' Player'].str.strip().unique())
+            # Add ALL civilizations that appear in the logs, not just major ones
+            current_civs.update(turn_civs)
+        
+        # Filter to only major civilizations for comparison
+        current_major_civs = current_civs.intersection(major_civilizations)
+        
+        print(f"   📈 Existing turns in database: {existing_turns}")
+        print(f"   🏛️ Existing civilizations: {sorted(existing_civs)}")
+        print(f"   🆕 Current log civilizations (all): {sorted(current_civs)}")
+        print(f"   🎯 Current major civilizations: {sorted(current_major_civs)}")
+        
+        # Check if this is a different game session
+        is_different_game = len(current_major_civs.intersection(existing_civs)) == 0
+        
+        if is_different_game and existing_civs:
+            print("🎮 Detected DIFFERENT GAME SESSION!")
+            print("   This appears to be a new game with different civilizations.")
+            print("   Both games will be preserved in the database.")
+        elif existing_civs:
+            print("🔄 Detected SAME GAME SESSION (continuing previous game)")
         else:
-            print("   📋 Database is empty")
+            print("🆕 First game session in database")
         
         # Determine which turns to process
         turns_to_process = []
-        for turn in complete_turns:
-            if turn not in existing_turns:
-                turns_to_process.append(turn)
+        
+        if is_different_game:
+            # Different game - we can insert all turns regardless of existing turn numbers
+            turns_to_process = complete_turns
+            print("🎯 Different game detected - will insert all available turns")
+            
+            # However, we need to handle civilization overlaps (like GAUL appearing in both games)
+            print("⚠️  Checking for civilization overlaps between games...")
+            overlapping_civs = current_civs.intersection(existing_civs)
+            if overlapping_civs:
+                print(f"🔄 Found overlapping civilizations: {sorted(overlapping_civs)}")
+                print("   Will delete conflicting old data and insert fresh data")
+                
+                # Delete old data for overlapping civilizations in conflicting turns
+                for civ in overlapping_civs:
+                    for turn in turns_to_process:
+                        if turn in existing_turns:
+                            cursor.execute(
+                                "DELETE FROM civ_game_data WHERE game_turn = %s AND civilization = %s",
+                                (int(turn), civ)
+                            )
+                            print(f"   🗑️ Removed old data for {civ} turn {turn}")
+                conn.commit()
+            else:
+                print("✅ No civilization overlaps - can insert safely")
+        else:
+            # Same game - only insert new turns
+            for turn in complete_turns:
+                if turn not in existing_turns:
+                    turns_to_process.append(turn)
         
         if not turns_to_process:
             print("✅ All complete turns already in database!")

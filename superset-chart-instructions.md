@@ -15,10 +15,26 @@
 ### **CONTRIBUTION MODE**
 - Leave as **"None"**
 
+### **FILTERS FOR GAME SELECTION**
+
+**⚠️ IMPORTANT: Choose ONE filter option based on what you want to analyze:**
+
+**Option A: CURRENT INDONESIA GAME ONLY (Latest 15 turns)**
+- Add `created_at` filter: `created_at::time >= '07:00:00' AND game_turn <= 15`
+- Shows: Indonesia, Ethiopia, Mali, Cree, Ottoman progression
+
+**Option B: OLD COMPLETE RACE (77-turn epic)**  
+- Add `created_at` filter: `created_at::time < '07:00:00'`
+- Shows: Rome, England, Netherlands, China, Canada, Gaul complete race
+
+**Option C: ALL HISTORICAL DATA (Both games combined)**
+- No filters needed
+- Shows: Both games together (may be confusing due to turn overlap)
+
 ### **FILTERS**
 - Remove the `created_at (No filter)` by clicking the **X** 
 - Click **"Drop columns/metrics here or click"**
-- Add `game_turn` filter with range 1-47
+- Add your chosen filter from options above
 
 ### **SERIES LIMIT**
 - Change from **"None"** to **"10"** (to show all 6 civilizations)
@@ -51,14 +67,24 @@
    - Click the "None" dropdown under SERIES LIMIT
    - Change to **"10"** (ensures all civilizations show)
 
-6. **Add proper FILTERS:**
-   - Click in the FILTERS box
-   - Add `game_turn` 
-   - Set range: **1 to 47**
+6. **Add proper FILTERS to select which game:**
+   
+   **For OLD GAME (turns 1-77, Rome/England/China/Netherlands/Canada/Gaul):**
+   - Add `created_at` filter
+   - Set START: **2025-08-02 00:00:00** 
+   - Set END: **2025-08-02 02:00:00**
+   
+   **For NEW GAME (turns 1-15, Indonesia/Ethiopia/Mali/Cree/Ottoman/Gaul):**
+   - Add `created_at` filter  
+   - Set START: **2025-08-02 07:00:00**
+   - Set END: **2025-08-02 12:00:00** (or leave blank)
 
 7. **Click "CREATE CHART"** at the bottom
 
-This will create a line chart showing each civilization's score progression over all 47 turns, with separate colored lines for England, Rome, China, Netherlands, Canada, and Gaul.
+This will create a line chart showing each civilization's score progression. Choose your time filter above to select which game to analyze:
+
+**OLD GAME (77 turns)**: Epic race between Rome, England, China, Netherlands, Canada, and Gaul
+**NEW GAME (15 turns)**: Current race with Indonesia, Ethiopia, Mali, Cree, Ottoman, and Gaul
 
 ## 📊 Additional Chart Variations
 

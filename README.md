@@ -55,6 +55,12 @@ python data_manager.bat
 - **Login**: admin / admin
 - **Create charts** using instructions in `superset-chart-instructions.md`
 
+### **💡 Pro Tip: Use the Control Panel**
+Open `control-panel.html` in your browser for a user-friendly interface with:
+- One-click data refresh buttons
+- Direct links to dashboard and documentation  
+- Workflow reminders and status checking
+
 **🎉 You now have a working Civ VI race analysis dashboard!**
 
 ---
