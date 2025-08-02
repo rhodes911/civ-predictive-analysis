@@ -37,6 +37,24 @@ services:
              superset init &&
              superset run -h 0.0.0.0 -p 8088"
 
+  data-loader:
+    build:
+      context: .
+      dockerfile: Dockerfile.data-loader
+    container_name: civ6_data_loader
+    volumes:
+      - type: bind
+        source: ${LOCALAPPDATA}/Firaxis Games/Sid Meier's Civilization VI/Logs
+        target: /civ6-logs
+        read_only: true
+    networks:
+      - civ6_network
+    depends_on:
+      - postgres
+    profiles:
+      - data-import
+    command: python stage4h_insert_data.py
+
 volumes:
   postgres_data:
   superset_data:

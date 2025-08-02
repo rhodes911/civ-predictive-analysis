@@ -40,13 +40,9 @@ docker-compose up -d
 ### **Step 3: Load Your Game Data**
 ```bash
 # Load your real Civ VI data (if you have an active game)
-# Simply double-click this file:
-load-game-data.bat
+python stage4h_insert_data.py
 
-# OR use Docker command directly:
-docker-compose --profile data-import up data-loader
-
-# OR load sample data for testing:
+# OR load sample data for testing
 python data_manager.bat
 ```
 
@@ -196,20 +192,10 @@ Civ VI Game → CSV Files → Python Script → PostgreSQL → Superset Dashboar
 
 ### **Adding More Turns**
 ```bash
-# After playing more turns in Civ VI, just double-click:
-load-game-data.bat
-
-# OR use the Docker command:
-docker-compose --profile data-import up data-loader
-
-# Dashboard automatically shows new data (refresh page)
+# After playing more turns in Civ VI
+python stage4h_insert_data.py
+# Dashboard automatically shows new data
 ```
-
-**🎯 Super Simple Workflow:**
-1. Play Civ VI and save your game
-2. Double-click `load-game-data.bat` 
-3. Refresh dashboard to see updated race data
-4. Repeat as you play more turns!
 
 ### **Creating Custom Charts**
 Follow the detailed instructions in `superset-chart-instructions.md`:

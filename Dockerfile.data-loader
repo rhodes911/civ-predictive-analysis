@@ -1,0 +1,15 @@
+FROM python:3.11-slim
+
+# Install required packages
+RUN pip install pandas psycopg2-binary
+
+# Set working directory
+WORKDIR /app
+
+# Copy the data loading script
+COPY stage4h_insert_data.py .
+
+# Update the script to use Docker environment
+ENV PYTHONUNBUFFERED=1
+
+# The command will be specified in docker-compose.yml
