@@ -90,7 +90,10 @@ def insert_civ_data():
             " CIVILIZATION_BABYLON",
             " CIVILIZATION_MACEDON",
             " CIVILIZATION_POLAND",
-            " CIVILIZATION_SCYTHIA"
+            " CIVILIZATION_SCYTHIA",
+            # Fourth game (current)
+            " CIVILIZATION_SUMERIA",
+            " CIVILIZATION_FRANCE"
         }
         
         # Find the latest complete turn (same logic as stage4d/4e)
@@ -231,11 +234,13 @@ def insert_civ_data():
             turn_stats = stats_df[stats_df['Game Turn'] == current_turn]
             turn_stats2 = dataframes['stats2'][dataframes['stats2']['Game Turn'] == current_turn]
             turn_scores = dataframes['scores'][dataframes['scores']['Game Turn'] == current_turn]
+            turn_scores = dataframes['scores'][dataframes['scores']['Game Turn'] == current_turn]
             
             # Filter for major civilizations only
             major_civs_stats = turn_stats[turn_stats[' Player'].isin(major_civilizations)]
             major_civs_stats2 = turn_stats2[turn_stats2[' Player'].isin(major_civilizations)]
             
+            # For scores, we need to map civilization names to player numbers
             # For scores, we need to map civilization names to player numbers
             # Create a mapping based on the civilizations ACTUALLY IN THIS TURN, not all major civs
             current_turn_civs = sorted(major_civs_stats[' Player'].unique())
@@ -251,8 +256,13 @@ def insert_civ_data():
             max_players = len(current_turn_civs)
             major_civs_scores = turn_scores[turn_scores[' Player'].isin(range(max_players))]
             
+            # Filter scores using the actual number of players in this turn
+            max_players = len(current_turn_civs)
+            major_civs_scores = turn_scores[turn_scores[' Player'].isin(range(max_players))]
+            
             print(f"  Stats: {len(major_civs_stats)} records")
             print(f"  Stats2: {len(major_civs_stats2)} records") 
+            print(f"  Scores: {len(major_civs_scores)} records") 
             print(f"  Scores: {len(major_civs_scores)} records")
         
             # Process each major civilization for this turn

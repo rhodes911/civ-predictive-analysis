@@ -1,0 +1,91 @@
+2025-08-03 19:13:55,325 - INFO - Loading C:\Users\rhode\AppData\Local\Firaxis Games\Sid Meier's Civilization VI\Logs\Player_Stats.csv
+2025-08-03 19:13:55,340 - INFO - Loaded Player_Stats: 7948 rows, 22 columns
+2025-08-03 19:13:55,340 - INFO - Loading C:\Users\rhode\AppData\Local\Firaxis Games\Sid Meier's Civilization VI\Logs\Player_Stats_2.csv
+2025-08-03 19:13:55,349 - INFO - Loaded Player_Stats_2: 7948 rows, 14 columns
+2025-08-03 19:13:55,349 - INFO - Loading C:\Users\rhode\AppData\Local\Firaxis Games\Sid Meier's Civilization VI\Logs\Game_PlayerScores.csv
+2025-08-03 19:13:55,357 - INFO - Loaded Game_PlayerScores: 8450 rows, 18 columns
+2025-08-03 19:13:55,358 - INFO - Creating merged dataset for ML training
+2025-08-03 19:13:55,358 - INFO - Loading C:\Users\rhode\AppData\Local\Firaxis Games\Sid Meier's Civilization VI\Logs\Player_Stats.csv
+2025-08-03 19:13:55,368 - INFO - Loaded Player_Stats: 7948 rows, 22 columns
+2025-08-03 19:13:55,369 - INFO - Loading C:\Users\rhode\AppData\Local\Firaxis Games\Sid Meier's Civilization VI\Logs\Player_Stats_2.csv
+2025-08-03 19:13:55,377 - INFO - Loaded Player_Stats_2: 7948 rows, 14 columns
+2025-08-03 19:13:55,377 - INFO - Loading C:\Users\rhode\AppData\Local\Firaxis Games\Sid Meier's Civilization VI\Logs\Game_PlayerScores.csv
+2025-08-03 19:13:55,386 - INFO - Loaded Game_PlayerScores: 8450 rows, 18 columns
+2025-08-03 19:13:55,410 - INFO - Created merged dataset: 8952 rows, 55 columns
+2025-08-03 19:13:55,411 - INFO - ============================================================
+2025-08-03 19:13:55,411 - INFO - DATA QUALITY ANALYSIS
+2025-08-03 19:13:55,411 - INFO - ============================================================
+2025-08-03 19:13:55,411 - INFO - Total records: 8,952
+2025-08-03 19:13:55,411 - INFO - Total columns: 55
+2025-08-03 19:13:55,412 - INFO - Game turns: 1 - 503
+2025-08-03 19:13:55,412 - INFO - Unique players: 16
+2025-08-03 19:13:55,414 - INFO - 
+MISSING DATA:
+2025-08-03 19:13:55,415 - INFO -   player_name: 1,004 (11.2%)
+2025-08-03 19:13:55,415 - INFO -   num_cities: 1,004 (11.2%)
+2025-08-03 19:13:55,415 - INFO -   population: 1,004 (11.2%)
+2025-08-03 19:13:55,415 - INFO -   techs: 1,004 (11.2%)
+2025-08-03 19:13:55,415 - INFO -   civics: 1,004 (11.2%)
+2025-08-03 19:13:55,416 - INFO -   land_units: 1,004 (11.2%)
+2025-08-03 19:13:55,416 - INFO -   corps: 1,004 (11.2%)
+2025-08-03 19:13:55,416 - INFO -   armies: 1,004 (11.2%)
+2025-08-03 19:13:55,416 - INFO -   naval_units: 1,004 (11.2%)
+2025-08-03 19:13:55,416 - INFO -   tiles_owned: 1,004 (11.2%)
+2025-08-03 19:13:55,417 - INFO -   tiles_improved: 1,004 (11.2%)
+2025-08-03 19:13:55,417 - INFO -   balance_gold: 1,004 (11.2%)
+2025-08-03 19:13:55,417 - INFO -   balance_faith: 1,004 (11.2%)
+2025-08-03 19:13:55,417 - INFO -   yield_science: 1,004 (11.2%)
+2025-08-03 19:13:55,417 - INFO -   yield_culture: 1,004 (11.2%)
+2025-08-03 19:13:55,417 - INFO -   yield_gold: 1,004 (11.2%)
+2025-08-03 19:13:55,417 - INFO -   yield_faith: 1,004 (11.2%)
+2025-08-03 19:13:55,418 - INFO -   yield_production: 1,004 (11.2%)
+2025-08-03 19:13:55,418 - INFO -   yield_food: 1,004 (11.2%)
+2025-08-03 19:13:55,418 - INFO -   data_source: 1,004 (11.2%)
+2025-08-03 19:13:55,418 - INFO -   loaded_at: 1,004 (11.2%)
+2025-08-03 19:13:55,418 - INFO -   tiles_by_type: 1,004 (11.2%)
+2025-08-03 19:13:55,418 - INFO -   buildings: 1,004 (11.2%)
+2025-08-03 19:13:55,418 - INFO -   districts: 1,004 (11.2%)
+2025-08-03 19:13:55,419 - INFO -   population_alt: 1,004 (11.2%)
+2025-08-03 19:13:55,419 - INFO -   outgoing_trade_routes: 1,004 (11.2%)
+2025-08-03 19:13:55,419 - INFO -   tourism: 1,004 (11.2%)
+2025-08-03 19:13:55,419 - INFO -   diplo_victory_points: 1,004 (11.2%)
+2025-08-03 19:13:55,419 - INFO -   balance_favor: 1,004 (11.2%)
+2025-08-03 19:13:55,419 - INFO -   lifetime_favor: 1,004 (11.2%)
+2025-08-03 19:13:55,419 - INFO -   co2_per_turn: 1,004 (11.2%)
+2025-08-03 19:13:55,419 - INFO -   data_source_ext: 1,004 (11.2%)
+2025-08-03 19:13:55,420 - INFO -   loaded_at_ext: 1,004 (11.2%)
+2025-08-03 19:13:55,420 - INFO -   player_id: 502 (5.6%)
+2025-08-03 19:13:55,420 - INFO -   total_score: 502 (5.6%)
+2025-08-03 19:13:55,420 - INFO -   score_civics: 502 (5.6%)
+2025-08-03 19:13:55,420 - INFO -   score_empire: 502 (5.6%)
+2025-08-03 19:13:55,420 - INFO -   score_great_people: 502 (5.6%)
+2025-08-03 19:13:55,420 - INFO -   score_religion: 502 (5.6%)
+2025-08-03 19:13:55,420 - INFO -   score_tech: 502 (5.6%)
+2025-08-03 19:13:55,421 - INFO -   score_wonder: 502 (5.6%)
+2025-08-03 19:13:55,421 - INFO -   score_trade: 502 (5.6%)
+2025-08-03 19:13:55,421 - INFO -   score_pillage: 502 (5.6%)
+2025-08-03 19:13:55,421 - INFO -   score_income: 502 (5.6%)
+2025-08-03 19:13:55,421 - INFO -   score_scenario1: 502 (5.6%)
+2025-08-03 19:13:55,421 - INFO -   score_scenario2: 502 (5.6%)
+2025-08-03 19:13:55,421 - INFO -   score_scenario3: 502 (5.6%)
+2025-08-03 19:13:55,421 - INFO -   score_category_e: 502 (5.6%)
+2025-08-03 19:13:55,422 - INFO -   data_source_score: 502 (5.6%)
+2025-08-03 19:13:55,422 - INFO -   loaded_at_score: 502 (5.6%)
+2025-08-03 19:13:55,422 - INFO - 
+KEY METRICS DISTRIBUTION:
+2025-08-03 19:13:55,422 - INFO -   yield_science: min=0.0, max=501.0, mean=43.3
+2025-08-03 19:13:55,423 - INFO -   yield_culture: min=0.0, max=668.0, mean=41.5
+2025-08-03 19:13:55,423 - INFO -   tourism: min=0.0, max=591.0, mean=31.0
+2025-08-03 19:13:55,424 - INFO -   diplo_victory_points: min=0.0, max=23.0, mean=2.3
+2025-08-03 19:13:55,424 - INFO -   total_score: min=0.0, max=1866.0, mean=281.1
+2025-08-03 19:13:55,425 - INFO - 
+PLAYERS PER TURN:
+2025-08-03 19:13:55,425 - INFO -   Average: 15.8
+2025-08-03 19:13:55,426 - INFO -   Range: 1 - 16
+2025-08-03 19:13:55,427 - INFO - 
+FINAL TURN (503) RANKINGS:
+2025-08-03 19:13:55,429 - INFO -   1. CIVILIZATION_POLAND: 932.0 points
+2025-08-03 19:13:55,607 - INFO - Saved dataset to: civ6_ml_training_data_20250803_191355.csv
+2025-08-03 19:13:55,645 - INFO - Saved dataset to: civ6_player_stats_cleaned_20250803_191355.csv
+2025-08-03 19:13:55,671 - INFO - Saved dataset to: civ6_player_stats_2_cleaned_20250803_191355.csv
+2025-08-03 19:13:55,695 - INFO - Saved dataset to: civ6_game_scores_cleaned_20250803_191355.csv
